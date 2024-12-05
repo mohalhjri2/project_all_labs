@@ -1,11 +1,4 @@
-CREATE TABLE pets (
-                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                      name VARCHAR(255) NOT NULL,
-                      animal_type VARCHAR(255) NOT NULL,
-                      breed VARCHAR(255) NOT NULL,
-                      age INT NOT NULL
-);
-
+-- Create the household table first
 CREATE TABLE household (
                            eircode VARCHAR(8) PRIMARY KEY,
                            number_of_occupants INT NOT NULL,
@@ -13,16 +6,24 @@ CREATE TABLE household (
                            owner_occupied BIT NOT NULL
 );
 
-ALTER TABLE pets ADD COLUMN household_eircode VARCHAR(8);
-ALTER TABLE pets ADD CONSTRAINT fk_household FOREIGN KEY (household_eircode) REFERENCES household (eircode);
-
+-- Create the pets table after the household table
+CREATE TABLE pets (
+                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                      name VARCHAR(255) NOT NULL,
+                      animal_type VARCHAR(255) NOT NULL,
+                      breed VARCHAR(255) NOT NULL,
+                      age INT NOT NULL,
+                      household_eircode VARCHAR(8),
+                      CONSTRAINT fk_household FOREIGN KEY (household_eircode) REFERENCES household (eircode)
+);
+-- Create the 'users' table
 CREATE TABLE users (
                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                       county VARCHAR(255),
-                       first_name VARCHAR(255) NOT NULL,
-                       last_name VARCHAR(255) NOT NULL,
-                       password VARCHAR(255) NOT NULL,
-                       role VARCHAR(255) NOT NULL,
-                       unlocked BOOLEAN NOT NULL,
-                       username VARCHAR(255) NOT NULL UNIQUE
+                       username VARCHAR(255) NOT NULL UNIQUE, -- Email address
+                       password VARCHAR(255) NOT NULL,        -- Encrypted password
+                       role VARCHAR(50) NOT NULL,             -- Role: USER or ADMIN
+                       locked BOOLEAN NOT NULL DEFAULT FALSE, -- Account locked status
+                       first_name VARCHAR(100) NOT NULL,      -- First name
+                       last_name VARCHAR(100) NOT NULL,       -- Last name
+                       county VARCHAR(50) NOT NULL            -- County (e.g., 'Cork', 'Kerry')
 );

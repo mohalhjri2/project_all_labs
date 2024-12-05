@@ -1,13 +1,14 @@
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Buddy', 'Dog', 'Golden Retriever', 3);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Mittens', 'Cat', 'Siamese', 2);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Charlie', 'Dog', 'Beagle', 4);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Whiskers', 'Cat', 'Persian', 5);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Coco', 'Rabbit', 'Holland Lop', 1);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Goldie', 'Fish', 'Goldfish', 1);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Polly', 'Bird', 'Parakeet', 2);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Max', 'Dog', 'German Shepherd', 5);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Luna', 'Cat', 'Maine Coon', 3);
-INSERT INTO pets (name, animal_type, breed, age) VALUES ('Nibbles', 'Hamster', 'Syrian Hamster', 1);
+INSERT INTO pets (name, animal_type, breed, age) VALUES
+                                                     ('Buddy', 'Dog', 'Golden Retriever', 3),
+                                                     ('Mittens', 'Cat', 'Siamese', 2),
+                                                     ('Charlie', 'Dog', 'Beagle', 4),
+                                                     ('Whiskers', 'Cat', 'Persian', 5),
+                                                     ('Coco', 'Rabbit', 'Holland Lop', 1),
+                                                     ('Goldie', 'Fish', 'Goldfish', 1),
+                                                     ('Polly', 'Bird', 'Parakeet', 2),
+                                                     ('Max', 'Dog', 'German Shepherd', 5),
+                                                     ('Luna', 'Cat', 'Maine Coon', 3),
+                                                     ('Nibbles', 'Hamster', 'Syrian Hamster', 1);
 
 INSERT INTO household (eircode, number_of_occupants, max_number_of_occupants, owner_occupied) VALUES
                                                                                                   ('D02XY45', 3, 5, 1),
@@ -26,5 +27,7 @@ INSERT INTO household (eircode, number_of_occupants, max_number_of_occupants, ow
                                                                                                   ('R67CD01', 5, 7, 1),
                                                                                                   ('S23EF45', 1, 2, 0);
 
-INSERT INTO users (county, first_name, last_name, password, role, unlocked, username)
-VALUES ('Cork', 'John', 'Doe', 'password123', 'ROLE_USER', true, 'johndoe');
+INSERT INTO users (username, password, role, locked, first_name, last_name, county)
+VALUES
+    ('admin@example.com', '$2a$10$7B/YFv/jWl0ReJg0LzLkFuCMT8Rd/dDxczcBbzDZrrMwz82PGVRfK', 'ADMIN', false, 'Admin', 'User', 'Cork'),
+    ('user@example.com', '$2a$10$7B/YFv/jWl0ReJg0LzLkFuCMT8Rd/dDxczcBbzDZrrMwz82PGVRfK', 'USER', false, 'Regular', 'User', 'Kerry');
